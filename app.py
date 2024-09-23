@@ -18,7 +18,7 @@ capital_filter = st.sidebar.multiselect(
      df.ocean_proximity.unique())  # defaults
 
 # create a radio button
-income_level = st.radio(
+income_level = st.sidebar.radio(
     'Filter by Income Level',
     ('Low', 'Medium', 'High')
 )
