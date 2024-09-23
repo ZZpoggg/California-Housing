@@ -41,6 +41,6 @@ df = df[df.ocean_proximity.isin(location_filter)]
 st.map(df)
 
 # show the plot
-fig, ax = plt.subplots(figsize=(20, 5))
+fig, ax = plt.subplots(figsize=(20, 20))
 df['median_house_value'].hist(bins=30, ax=ax)
 st.pyplot(fig)
