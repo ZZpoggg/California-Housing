@@ -8,11 +8,10 @@ sns.set()
 st.title('California Housing Data(1990)')
 df = pd.read_csv('housing.csv')
 
-# note that you have to use 0.0 and 40.0 given that the data type of population is float
-population_filter = st.slider('Minimal Median House Price :', 0, 500001,200000)  # min, max, default
+price_filter = st.slider('Minimal Median House Price :', 0, 500001,200000)  # min, max, default
 
 # create a multi select
-capital_filter = st.sidebar.multiselect(
+location_filter = st.sidebar.multiselect(
      'Choose the location type',
      df.ocean_proximity.unique(),  # options
      df.ocean_proximity.unique())  # defaults
@@ -30,6 +29,12 @@ elif income_level == 'Medium':
     df_filtered = df[(df['income'] > 2.5) & (df['income'] < 4.5)]
 elif income_level == 'High' :
     df_filtered = df[df['income'] > 4.5]
+
+# filter by median price
+df = df[df.median_house_value >= price_filter]
+
+# filter by location type
+df = df[df.ocean_proximity.isin(location_filter)]
 
 # show DataFrame
 st.write(df_filtered)
