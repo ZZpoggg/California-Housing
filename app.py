@@ -24,11 +24,11 @@ income_level = st.sidebar.radio(
 
 # filter DataFrame by income level
 if income_level == 'Low':
-    df_filtered = df[df['median_income'] <= 2.5]
+    df = df[df['median_income'] <= 2.5]
 elif income_level == 'Medium':
-    df_filtered = df[(df['median_income'] > 2.5) & (df['median_income'] < 4.5)]
+    df = df[(df['median_income'] > 2.5) & (df['median_income'] < 4.5)]
 elif income_level == 'High' :
-    df_filtered = df[df['median_income'] > 4.5]
+    df = df[df['median_income'] > 4.5]
 
 # filter by median price
 df = df[df.median_house_value >= price_filter]
